@@ -1,5 +1,13 @@
 const {User} = require('../models/index')
-class userController {
+class UserController {
+    static register (req, res, next) {
+        res.send("TES regist")
+
+    }
+
+    static login (req, res, next) {
+        res.send("TES login")
+    }
 
 }
-module.exports = userController
+module.exports = UserController
