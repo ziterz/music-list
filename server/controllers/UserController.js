@@ -15,7 +15,7 @@ class UserController {
                     id: result.id,
                     email: result.email
                 }
-                let token = generateToken(payload)
+                let token = generateToken(user)
                 res.status(201).json({
                     'id': user.id,
                     'email': user.email,
@@ -29,7 +29,34 @@ class UserController {
 
     }
     static login(req, res, next) {
-
+        let payload = {
+            email: req.body.email,
+            password: req.body.password
+        }
+        User.findOne({
+            where: {
+                'email': payload.email
+            }
+        }).then(result => {
+            if (result) {
+                let compare = decryptPass(payload.password, result.password)
+                if (compare) {
+                    let user = {
+                        id: result.id,
+                        email: result.email
+                    }
+                    return res.status(200).json({
+                        id: user.id,
+                        email: user.email,
+                        access_token: generateToken(user)
+                    })
+                } else {
+                    return next(err)
+                }
+            } else {
+                return next(err)
+            }
+        })
     }
 }
 
