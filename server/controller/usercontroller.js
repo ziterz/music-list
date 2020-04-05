@@ -78,6 +78,22 @@ class UserController {
                 return res.status(201).json(payload)
             })
     }
+
+    static DeleteMusic(req, res, next) {
+        Music.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function(result) {
+            return res.status(200).json({
+                message: "Successfully delete music from your list"
+            })
+        })
+        .catch(function(err) {
+            next(err)
+        })
+    }
         
 
 }

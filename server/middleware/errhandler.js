@@ -13,10 +13,22 @@ module.exports = function(err, req, res, next) {
     }
     else {
         switch (err.msg) {
-            case "":
-                
+            case "Not Authorized":
+                msg = {
+                    message: "Not Authorized"
+                }
+                return res.status(400).json(msg)
                 break;
-        
+            case 'Music Does Not Exist':
+                msg= {
+                    message: "Music Does Not Exist"
+                }
+                return res.status(400).json(message)
+            case 'Not Authenticated':
+                msg = {
+                    message: "Not Authenticated"
+                }
+                return res.status(400).json(message)
             default:
                 msg = {
                     message: "internal server error"

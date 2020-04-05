@@ -25,6 +25,18 @@ $(document).ready(function() {
         NotSignedIn()
         localStorage.clear()
     })
+    $('#CreateMusic').on('click', function(e) {
+        e.preventDefault()
+        $('#MainBody').hide()
+        $('#AddMusic').show()
+    })
+    $('#CreateCancel').on('click', function(e) {
+        $('#MusicTitle').val('')
+        $('#MusicArtist').val('')
+        $('#MusicGenre').val('')
+        $('#MainBody').show()
+        $('#AddMusic').hide()
+    })
 
     $('#RegisterForm').on('submit', function(e) {
         e.preventDefault()
@@ -61,6 +73,8 @@ $(document).ready(function() {
             .done(function(result) {
                 SignedIn()
                 localStorage.setItem('access_token', result.access_token)
+                GetMusic()
+                $('#MainBody').show()
                 console.log(result)
                 $('#LoginEmail').val(''),
                 $('#LoginPassword').val('')
@@ -68,5 +82,32 @@ $(document).ready(function() {
             .fail(function(err) {
                 console.log(err)
             })
+    })
+
+    $('#MusicForm').on('submit', function(e) {
+        e.preventDefault()
+        $.ajax({
+            url: 'http://localhost:3000/musics',
+            method: 'POST',
+            headers: {
+                access_token: localStorage.getItem('access_token')
+            },
+            data: {
+                title: $('#MusicTitle').val(),
+                artist: $('#MusicArtist').val(),
+                genre: $('#MusicGenre').val()
+            }
+        })
+        .done(function(result) {
+            GetMusic()
+            $('#MusicTitle').val('')
+            $('#MusicArtist').val('')
+            $('#MusicGenre').val('')
+            $('#MainBody').show()
+            $('#AddMusic').hide()
+        })
+        .fail(function(err) {
+
+        })
     })
 })

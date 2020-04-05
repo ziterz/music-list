@@ -1,0 +1,55 @@
+table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    width: 40vw;
+    padding: 5px;
+    text-align: left;
+  }
+
+#RegisterForm {
+    margin-left: 40vw;
+    margin-top: 5vh;
+    margin-right: 30vw;
+    border: 10px solid black;
+    border-style: dotted;
+    padding-left: 3vw;
+    padding-top:5vh;
+    padding-bottom: 5vh;
+}
+
+#LoginForm {
+    margin-left: 40vw;
+    margin-top: 5vh;
+    margin-right: 30vw;
+    border: 10px solid black;
+    border-style: dotted;
+    padding-left: 3vw;
+    padding-top:5vh;
+    padding-bottom: 5vh;
+}
+#MainBody {
+    margin-top: 10vh;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    border: 10px solid black
+
+}
+body {
+    background-color: orange;
+}
+h1 {
+    text-align: center;
+}
+#AddMusic {
+    margin-left: 40vw;
+    margin-top: 5vh;
+    margin-right: 30vw;
+    border: 10px solid black;
+    border-style: dotted;
+    padding-left: 3vw;
+    padding-top:5vh;
+    padding-bottom: 5vh;
+
+}
