@@ -7,7 +7,7 @@ function encryptPassword (password) {
 }
 
 function decryptPassword (password, hash){
-    bcrypt.compareSync(password, hash);
+    return bcrypt.compareSync(password, hash);
 }
 
 module.exports = {
