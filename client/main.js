@@ -10,8 +10,10 @@ function auth() {
 
     if (localStorage.access_token) {
         $("#login_page").hide()
+        $('#main_page').show()
     } else {
         $("#login_page").show()
+        $('#main_page').hide()
     }
 }
 function login(event) {

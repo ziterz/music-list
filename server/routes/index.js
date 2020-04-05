@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const userRoutes = require("./user")
+const musicRoutes = require("./music")
 router.use(userRoutes)
-
-module.exports = router
+router.use(musicRoutes)
+module.exports = router.use
