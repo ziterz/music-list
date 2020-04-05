@@ -14,6 +14,7 @@ class MusicController {
     }
 
     static create(req, res, next) {
+        console.log(`masuk create`)
         models.Music.create({
                 title: req.body.title,
                 artist: req.body.artist,
@@ -35,8 +36,7 @@ class MusicController {
         models.Music.destroy({ where: { id: req.params.id } })
             .then(result => {
                 return res.status(201).json({
-                    message: `Successfully deleted a music from your music list`,
-                    Music: result
+                    message: `Successfully deleted a music from your music list`
                 })
             })
             .catch(err => {
