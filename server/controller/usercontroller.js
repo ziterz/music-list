@@ -59,6 +59,27 @@ class UserController {
             })
     }
 
+    static AddMusic(req, res, next) {
+        let {title, artist, genre} = req.body
+        Music.create({
+            title,
+            artist,
+            genre,
+            UserId: req.Authenticated.id
+        })
+            .then(function(result) {
+                let payload = {
+                    id: result.id,
+                    title: result.title,
+                    artist: result.artist,
+                    genre: result.genre,
+                    UserId:result.UserId
+                }
+                return res.status(201).json(payload)
+            })
+    }
+        
+
 }
 
 module.exports = UserController

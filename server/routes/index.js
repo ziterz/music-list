@@ -12,6 +12,7 @@ routes.post('/register', UserController.Register)
 routes.post('/login', UserController.Login)
 routes.use(Authentication)
 routes.get('/musics', UserController.GetMusic)
+routes.post('/musics', UserController.AddMusic)
 
 
 module.exports = routes
