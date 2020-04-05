@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Music.associate = function(models) {
     // associations can be defined here
-    // Music.belongsTo(models.User)
+    Music.belongsTo(models.User)
   };
   return Music;
 };

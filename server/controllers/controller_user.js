@@ -1,12 +1,13 @@
-const {User} =  require('../models')
+const User = require('../models').User
 const { genToken } = require('../helper/jwt.js')
 const { decodePassword } = require('../helper/bycript')
 
 class Controller{
     static signup(req, res){
+        const {email, password} = req.body
         const payload = {
-            email : req.body.email,
-            password: req.body.password
+            email,
+            password
         }
         console.log(payload);
         
@@ -28,7 +29,8 @@ class Controller{
             .catch(err=>{
                 res.status(500).json({
                     type: 'InternalError',
-                    msg: 'Internal Error'
+                    msg: 'Internal Error',
+                    data: err
                 })
             })
     }

@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {
     hooks: {
-      beforeCreate: (User, options) => {
-        User.password = encodePassword(User.password)
-        console.log(User.password);
+      beforeCreate: (user, options) => {
+        user.password = encodePassword(user.password)
+        console.log(user.password);
         
       }
     },
